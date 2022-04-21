@@ -1,0 +1,8 @@
+import xlwings as xw
+app1 = xw.App(spec='wpsoffice', visible=True, add_book=False)
+xlsx_file = r'large-number-bug-reproduction.xlsx'
+wb2_result = app1.books.open(xlsx_file, read_only=False)
+sht0 = wb2_result.sheets[0]
+original_customer_id = sht0.cells(1, 1).options(numbers=int).value  # (rows, column)
+
+print(original_customer_id)
